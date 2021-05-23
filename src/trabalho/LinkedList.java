@@ -291,8 +291,29 @@ public class LinkedList<T> {
 
         while (aux != null) {
             bodyBuilder.append("[");
-            bodyBuilder.append(aux.element.toString());
+            bodyBuilder.append(aux.element);
             bodyBuilder.append("] ");
+            aux = aux.next;
+        }
+
+        return bodyBuilder.toString();
+    }
+
+    public String toStringWithHighlight(T highlightedElement) {
+        StringBuilder bodyBuilder = new StringBuilder();
+
+        Node aux = head;
+
+        while (aux != null) {
+            if (aux.element.equals(highlightedElement)) {
+                bodyBuilder.append("[");
+                bodyBuilder.append(aux.element);
+                bodyBuilder.append(" ");
+            } else {
+                bodyBuilder.append(aux.element);
+                bodyBuilder.append(" ");
+            }
+
             aux = aux.next;
         }
 
