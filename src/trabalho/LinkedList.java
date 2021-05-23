@@ -178,9 +178,9 @@ public class LinkedList<T> {
         
         // Verifica se eh a ultima posição
         if (index == count - 1) {
-            T num = tail.element;
+            T rmElement = tail.element;
             tail.element = element;
-            return num;
+            return rmElement;
         }
                 
         // "caminha" ate a posição index
@@ -189,13 +189,13 @@ public class LinkedList<T> {
             aux = aux.next;
         }        
         // guarda o elemento que esta na posição index
-         T num = aux.element;
+         T rmElement = aux.element;
          
         // coloca "element" na posição index
          aux.element = element;
          
         // retorna o elemento guardado   
-        return num;
+        return rmElement;
     }
 
     /**
