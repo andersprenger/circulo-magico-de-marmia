@@ -68,7 +68,7 @@ public class MagicCircle {
         // posição do elemento ativo na lista
         int activeElementIndex = magicCircle.indexOf(activeElement);
         // soma da posição do elemento ativo e o resultado da soma dos valores dos vizinhos do elemento ativo
-        int joiningElementIndex = activeElementIndex + neighborsSum();
+        int joiningElementIndex = activeElementIndex + 1 + neighborsSum();
 
         if (joiningElementIndex > magicCircle.size()) {
             // se a posição do elemento entrando na lista passar a ultima posição do circulo mágico + 1
@@ -88,7 +88,7 @@ public class MagicCircle {
         // visto que o rei já esta no circulo mágico, e que ele faz parte da população
         // o for começa adicionando o elemento 1, até populationSize, rodando populationSize - 1 vezes.
         for (int i = 1; i <= populationSize; i++) {
-            join(1);
+            join(i);
             if (i <= 20) {
                 System.out.println(magicCircle);
             }
