@@ -95,9 +95,9 @@ public class LinkedList<T> {
         }
         
         // Verifica se o elemento buscado esta
-        // na ultima posicao
+        // na ultima posição
         if (index == count-1)
-            return tail.element; // retorna o elemento da ultima posicao        
+            return tail.element; // retorna o elemento da ultima posição
         Node aux = head; // referencia aux para percorrer a lista
         int c = 0;
         while (c < index) {
@@ -127,8 +127,8 @@ public class LinkedList<T> {
     
     
     /**
-     * Insere um elemento em uma determinada posicao da lista.
-     * @param index a posicao da lista onde o elemento sera inserido
+     * Insere um elemento em uma determinada posição da lista.
+     * @param index a posição da lista onde o elemento sera inserido
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
@@ -143,7 +143,7 @@ public class LinkedList<T> {
         count++;
         
         // "Encadear" o nodo criado na lista
-        if (index == 0) { // Insercao no inicio
+        if (index == 0) { // Inserção no inicio
             if (head==null) { // se a lista estiver vazia
                 tail = n;
             }
@@ -152,12 +152,12 @@ public class LinkedList<T> {
             }
             head = n;
         }
-        else if (index == count) { // Insercao no final
+        else if (index == count) { // Inserção no final
             tail.next = n; // "conecta" o nodo na lista
             tail = n; // atualiza tail
         }
-        else { // Insercao no meio
-            // caminha ate a posicao anterior
+        else { // Inserção no meio
+            // caminha ate a posição anterior
             Node ant = head;
             for (int i=0; i<index-1; i++)
                 ant = ant.next;
@@ -168,11 +168,11 @@ public class LinkedList<T> {
     }
 
     /**
-     * Substitui o elemento armanzenado em uma determinada posicao da lista pelo
+     * Substitui o elemento armazenado em uma determinada posição da lista pelo
      * elemento indicado.
-     * @param index a posicao da lista
+     * @param index a posição da lista
      * @param element o elemento a ser armazenado na lista
-     * @return o elemento armazenado anteriormente na posicao da lista
+     * @return o elemento armazenado anteriormente na posição da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
     public T set(int index, T element) {
@@ -180,22 +180,22 @@ public class LinkedList<T> {
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         
-        // Verifica se eh a ultima posicao
+        // Verifica se eh a ultima posição
         if (index == count - 1) {
             T num = tail.element;
             tail.element = element;
             return num;
         }
                 
-        // "caminha" ate a posicao index
+        // "caminha" ate a posição index
         Node aux = head;
         for(int i=0; i < index; i++) {
             aux = aux.next;
         }        
-        // guarda o elemento que esta na posicao index
+        // guarda o elemento que esta na posição index
          T num = aux.element;
          
-        // coloca "element" na posicao index
+        // coloca "element" na posição index
          aux.element = element;
          
         // retorna o elemento guardado   
@@ -203,7 +203,7 @@ public class LinkedList<T> {
     }
 
     /**
-     * Remove a primeira ocorrencia do elemento na lista, se estiver presente.
+     * Remove a primeira ocorrência do elemento na lista, se estiver presente.
      * @param element o elemento a ser removido
      * @return true se a lista contem o elemento especificado e ele eh removido
      */
@@ -224,11 +224,11 @@ public class LinkedList<T> {
         
         while (aux != null) {
             if (aux.element.equals(element)) {
-                if (aux == tail) { // remocao do ultimo
+                if (aux == tail) { // remoção do ultimo
                     tail = ant;
                     tail.next = null;
                 }
-                else { // remocao do meio
+                else { // remoção do meio
                     ant.next = aux.next;
                 }                
                 count--;
@@ -242,17 +242,17 @@ public class LinkedList<T> {
     }
 
     /**
-     * Remove o elemento de uma determinada posicao da lista.
-     * @param index a posicao da lista
+     * Remove o elemento de uma determinada posição da lista.
+     * @param index a posição da lista
      * @return o elemento que foi removido da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
     public T removeByIndex(int index) {
-        // Primeiro verifica se o indice eh valido
+        // Primeiro verifica se o índice eh valido
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException(); // erro
         
-        // Remocao do primeiro elemento da lista
+        // Remoção do primeiro elemento da lista
         if(index == 0) {
             T elem = head.element; // guarda o elemento que sera removido
             head = head.next;
@@ -268,10 +268,10 @@ public class LinkedList<T> {
     }
 
     /**
-     * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a
+     * Retorna o índice da primeira ocorrência do elemento na lista, ou -1 se a
      * lista nao contem o elemento.
      * @param element o elemento a ser buscado
-     * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a
+     * @return o índice da primeira ocorrência do elemento na lista, ou -1 se a
      * lista nao contem o elemento
      */
     public int indexOf(T element) {
