@@ -2,7 +2,7 @@ package trabalho;
 
 /**
  * LinkedList.java
- * Implementação propria de lista encadeada baseado em código fonte da prof. Isabel Manssour.
+ * Implementação propria de lista encadeada genérica baseado em código de autoria da prof. Isabel Manssour.
  * @author Anderson Sprenger, Isabel Manssour
  * @param <T> tipo dos elementos da lista.
  */
