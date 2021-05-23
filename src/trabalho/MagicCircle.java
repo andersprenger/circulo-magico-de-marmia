@@ -1,5 +1,10 @@
 package trabalho;
 
+/**
+ * MagicCircle.java
+ * Trabalho 1, Pt. 2 da disciplina de Algoritmos e Estruturas de Dados I
+ * @author Anderson Sprenger
+ */
 public class MagicCircle {
     // lista com os números dos habitantes, representando o circulo mágico na memória.
     LinkedList<Integer> magicCircle;
