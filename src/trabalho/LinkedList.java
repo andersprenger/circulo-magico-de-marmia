@@ -299,7 +299,11 @@ public class LinkedList<T> {
         return bodyBuilder.toString();
     }
 
-    public String toStringWithHighlight(T highlightedElement) {
+    /**
+     * @return uma representação em String da lista com um elemento em destaque
+     * @param highlightedElement elemento em destaque na lista
+     */
+    public String toStringWithHighlightedElement(T highlightedElement) {
         StringBuilder bodyBuilder = new StringBuilder();
 
         Node aux = head;
