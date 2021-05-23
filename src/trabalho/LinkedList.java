@@ -275,7 +275,14 @@ public class LinkedList<T> {
      * lista nao contem o elemento
      */
     public int indexOf(T element) {
-        // Implemente o algoritmo
+        Node aux = head;
+        for (int i = 0; i < count; i++) {
+            if (aux.element == element) {
+                return i;
+            } else {
+                aux = aux.next;
+            }
+        }
         return -1;
     }
 
@@ -285,7 +292,13 @@ public class LinkedList<T> {
      * @return true se a lista contem o elemento especificado
      */
     public boolean contains(T element) {
-        // Implemente o algoritmo
+        Node aux = head;
+        for (int i = 0; i < count; i++) {
+            if (aux.element == element) {
+                return true;
+            }
+            aux = aux.next;
+        }
         return false;
     }
 
