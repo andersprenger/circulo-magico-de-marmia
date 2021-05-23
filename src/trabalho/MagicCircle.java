@@ -73,6 +73,10 @@ public class MagicCircle {
         }
     }
 
+    /**
+     * Começa a cerimonia do circulo mágico
+     * @param populationSize tamanho da população do Reino de Mármia
+     */
     public void startCeremony(int populationSize) {
         System.out.println(magicCircle.toStringWithHighlightedElement(activeElement));
 
