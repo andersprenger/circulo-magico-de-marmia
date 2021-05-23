@@ -9,7 +9,7 @@ package trabalho;
 
 public class LinkedList<T> {
 
-    // Classe interna Node
+    // Classe aninhada Node
     private class Node {
         public T element;
         public Node next;
@@ -84,14 +84,14 @@ public class LinkedList<T> {
     }
     
     /**
-     * Retorna o elemento de uma determinada posicao da lista.
+     * Retorna o elemento de uma determinada posição da lista.
      * @param index a posição da lista
-     * @return o elemento da posicao especificada
+     * @return o elemento da posição especificada
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
     public T get(int index) { // O(n)
         if ((index < 0) || (index >= count)) {
-            throw new IndexOutOfBoundsException(); //erro
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()"); //erro
         }
         
         // Verifica se o elemento buscado esta
@@ -121,11 +121,7 @@ public class LinkedList<T> {
 
         return s.toString();
     }    
-    
-    
-    ////////////////////////////////////////////////////////////////
-    
-    
+
     /**
      * Insere um elemento em uma determinada posição da lista.
      * @param index a posição da lista onde o elemento sera inserido
@@ -135,7 +131,7 @@ public class LinkedList<T> {
     public void add(int index, T element) {
         // Primeiro verifica se index eh valido
         if (index < 0 || index > size())
-            throw new IndexOutOfBoundsException(); // erro
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index > size()"); // erro
         
         // Criar o node
         Node n = new Node(element);
@@ -178,7 +174,7 @@ public class LinkedList<T> {
     public T set(int index, T element) {
         // Primeiro verifica se index eh valido
         if (index < 0 || index >= size())
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()");
         
         // Verifica se eh a ultima posição
         if (index == count - 1) {
@@ -250,7 +246,7 @@ public class LinkedList<T> {
     public T removeByIndex(int index) {
         // Primeiro verifica se o índice eh valido
         if (index < 0 || index >= size())
-            throw new IndexOutOfBoundsException(); // erro
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()"); // erro
         
         // Remoção do primeiro elemento da lista
         if(index == 0) {
@@ -301,5 +297,4 @@ public class LinkedList<T> {
         }
         return false;
     }
-
 }
