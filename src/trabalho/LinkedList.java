@@ -1,17 +1,18 @@
+package trabalho;
 
 public class LinkedListOfInteger {
 
     // Classe interna Node
     private class Node {
-        public Integer element;
+        public T element;
         public Node next;
 
-        public Node(Integer element) {
+        public Node(T element) {
             this.element = element;
             next = null;
         }
         
-        public Node(Integer element, Node next) {
+        public Node(T element, Node next) {
             this.element = element;
             this.next = next;
         }        
@@ -29,7 +30,7 @@ public class LinkedListOfInteger {
     /**
      * Construtor da lista.
      */
-    public LinkedListOfInteger() {
+    public LinkedList() {
         head = null;
         tail = null;
         count = 0;
@@ -64,7 +65,7 @@ public class LinkedListOfInteger {
      * Adiciona um elemento ao final da lista.
      * @param element elemento a ser adicionado ao final da lista
      */
-    public void add(Integer element)  { // O(1)
+    public void add(T element)  { // O(1)
         Node n = new Node(element);
         if (head == null) {
             head = n;
@@ -81,7 +82,7 @@ public class LinkedListOfInteger {
      * @return o elemento da posicao especificada
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer get(int index) { // O(n)
+    public T get(int index) { // O(n)
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException(); //erro
         }
@@ -124,7 +125,7 @@ public class LinkedListOfInteger {
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
-    public void add(int index, Integer element) {
+    public void add(int index, T element) {
         // Primeiro verifica se index eh valido
         if (index < 0 || index > size())
             throw new IndexOutOfBoundsException(); // erro
@@ -167,14 +168,14 @@ public class LinkedListOfInteger {
      * @return o elemento armazenado anteriormente na posicao da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer set(int index, Integer element) {
+    public T set(int index, T element) {
         // Primeiro verifica se index eh valido
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         
         // Verifica se eh a ultima posicao
         if (index == count - 1) {
-            Integer num = tail.element;
+            T num = tail.element;
             tail.element = element;
             return num;
         }
@@ -185,7 +186,7 @@ public class LinkedListOfInteger {
             aux = aux.next;
         }        
         // guarda o elemento que esta na posicao index
-         Integer num = aux.element;
+         T num = aux.element;
          
         // coloca "element" na posicao index
          aux.element = element;
@@ -199,7 +200,7 @@ public class LinkedListOfInteger {
      * @param element o elemento a ser removido
      * @return true se a lista contem o elemento especificado e ele eh removido
      */
-    public boolean remove(Integer element) {
+    public boolean remove(T element) {
         // retorna false se a lista estiver vazia
         if (count == 0)
             return false;
@@ -239,14 +240,14 @@ public class LinkedListOfInteger {
      * @return o elemento que foi removido da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer removeByIndex(int index) {
+    public T removeByIndex(int index) {
         // Primeiro verifica se o indice eh valido
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException(); // erro
         
         // Remocao do primeiro elemento da lista
         if(index == 0) {
-            Integer elem = head.element; // guarda o elemento que sera removido
+            T elem = head.element; // guarda o elemento que sera removido
             head = head.next;
             if (count==1) // se tinha apenas um elemento na lista
                 tail = null;
@@ -256,7 +257,7 @@ public class LinkedListOfInteger {
         
         // Remove do meio ou do final
         
-        return -1;
+        return null;
     }
 
     /**
@@ -266,7 +267,7 @@ public class LinkedListOfInteger {
      * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a
      * lista nao contem o elemento
      */
-    public int indexOf(Integer element) {
+    public int indexOf(T element) {
         // Implemente o algoritmo
         return -1;
     }
@@ -276,7 +277,7 @@ public class LinkedListOfInteger {
      * @param element o elemento a ser testado
      * @return true se a lista contem o elemento especificado
      */
-    public boolean contains(Integer element) {
+    public boolean contains(T element) {
         // Implemente o algoritmo
         return false;
     }
