@@ -1,6 +1,13 @@
 package trabalho;
 
-public class LinkedListOfInteger {
+/**
+ * LinkedList.java
+ * Implementação propria de lista encadeada baseado em código fonte da prof. Isabel Manssour.
+ * @author Anderson Sprenger, Isabel Manssour
+ * @param <T> tipo dos elementos da lista.
+ */
+
+public class LinkedList<T> {
 
     // Classe interna Node
     private class Node {
