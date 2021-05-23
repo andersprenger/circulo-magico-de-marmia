@@ -106,21 +106,6 @@ public class LinkedList<T> {
         }
         return (aux.element);
     }
-    
-    @Override
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-
-        Node aux = head;
-
-        while (aux != null) {
-            s.append(aux.element.toString());
-            s.append("\n");
-            aux = aux.next;
-        }
-
-        return s.toString();
-    }    
 
     /**
      * Insere um elemento em uma determinada posição da lista.
@@ -296,5 +281,21 @@ public class LinkedList<T> {
             aux = aux.next;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder bodyBuilder = new StringBuilder();
+
+        Node aux = head;
+
+        while (aux != null) {
+            bodyBuilder.append("[");
+            bodyBuilder.append(aux.element.toString());
+            bodyBuilder.append("] ");
+            aux = aux.next;
+        }
+
+        return bodyBuilder.toString();
     }
 }
