@@ -273,7 +273,7 @@ public class LinkedList<T> {
     public int indexOf(T element) {
         Node aux = head;
         for (int i = 0; i < count; i++) {
-            if (aux.element == element) {
+            if (aux.element.equals(element)) {
                 return i;
             } else {
                 aux = aux.next;
@@ -290,7 +290,7 @@ public class LinkedList<T> {
     public boolean contains(T element) {
         Node aux = head;
         for (int i = 0; i < count; i++) {
-            if (aux.element == element) {
+            if (aux.element.equals(element)) {
                 return true;
             }
             aux = aux.next;
