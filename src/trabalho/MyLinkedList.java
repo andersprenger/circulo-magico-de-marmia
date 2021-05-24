@@ -312,7 +312,7 @@ public class MyLinkedList<T> {
             if (aux.element.equals(highlightedElement)) {
                 bodyBuilder.append("[");
                 bodyBuilder.append(aux.element);
-                bodyBuilder.append(" ");
+                bodyBuilder.append("] ");
             } else {
                 bodyBuilder.append(aux.element);
                 bodyBuilder.append(" ");
