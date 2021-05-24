@@ -22,6 +22,7 @@ public class MagicCircle {
 
     /**
      * Adiciona um elemento no circulo mágico.
+     * Complexidade: O(n) = n
      * @param element elemento adicionado no circulo mágico.
      */
     private void join(Integer element) {
@@ -31,6 +32,7 @@ public class MagicCircle {
 
     /**
      * @return a soma entre os vizinhos do elemento ativo no circulo.
+     * Complexidade: O(n) = n
      */
     private int neighborsSum() {
         int activeElementIndex = magicCircle.indexOf(activeElement);
@@ -63,6 +65,7 @@ public class MagicCircle {
 
     /**
      * @return a posição onde ficara o elemento entrando no circulo mágico
+     * Complexidade: O(n) = n
      */
     private int joiningElementIndex() {
         // posição do elemento ativo na lista
@@ -81,6 +84,7 @@ public class MagicCircle {
     /**
      * Começa a cerimonia do circulo mágico
      * @param populationSize tamanho da população do Reino de Mármia
+     * Complexidade: O(n) = n^2
      */
     public void startCeremony(int populationSize) {
         System.out.println(magicCircle.toStringHighlighted(activeElement));
