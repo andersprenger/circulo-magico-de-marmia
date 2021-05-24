@@ -84,7 +84,6 @@ public class MagicCircle {
      */
     public void startCeremony(int populationSize) {
         System.out.println(magicCircle.toStringWithHighlightedElement(activeElement));
-//        System.out.println(magicCircle);
 
         // visto que o rei já esta no circulo mágico, e que ele faz parte da população
         // o for começa adicionando o elemento 1, até populationSize, rodando populationSize - 1 vezes.
@@ -92,7 +91,6 @@ public class MagicCircle {
             join(i);
             if (i <= 20) {
                 System.out.println(magicCircle.toStringWithHighlightedElement(activeElement));
-//                System.out.println(magicCircle);
             }
         }
     }
