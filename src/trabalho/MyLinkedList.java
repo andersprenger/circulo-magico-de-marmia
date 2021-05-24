@@ -51,7 +51,7 @@ public class MyLinkedList<T> {
 
     public void add(int index, T element) {
         if (index > size() || index < 0) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException(index > size() ? "index > size()" : "index < 0");
         } else if (index == size()) {
             add(element);
         } else {
@@ -74,10 +74,8 @@ public class MyLinkedList<T> {
     }
 
     public T get(int index) {
-        if (index < 0) {
-            throw new IndexOutOfBoundsException();
-        } else if (index >= size()) {
-            throw new IndexOutOfBoundsException();
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()");
         } else if (index == size() - 1) {
             return tail.element;
         }
@@ -90,7 +88,7 @@ public class MyLinkedList<T> {
 
     public T set(int index, T element) {
         if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()");
         } else if (index == size() - 1) {
             T elementRemoved = tail.element;
             tail.element = element;
@@ -108,7 +106,7 @@ public class MyLinkedList<T> {
 
     public T removeByIndex(int index) {
         if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= count");
         } else if (index == 0) {
             T elementRemoved = head.element;
             head = head.next;
@@ -200,7 +198,7 @@ public class MyLinkedList<T> {
         return str.toString();
     }
 
-    public String toStringWithHighlightedElement(T element) {
+    public String toStringHighlighted(T element) {
         StringBuilder str = new StringBuilder();
         Node aux = head;
         for (int i = 0; i < size(); i++) {
