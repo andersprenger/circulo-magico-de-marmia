@@ -3,6 +3,7 @@ package trabalho;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        MagicCircle magicCircle = new MagicCircle();
+        magicCircle.startCeremony(20);
     }
 }
