@@ -1,13 +1,13 @@
 package trabalho;
 
 /**
- * LinkedList.java
+ * MyLinkedList.java
  * Implementação propria de lista encadeada genérica baseado em código de autoria da prof. Isabel Manssour.
  * @author Anderson Sprenger, Isabel Manssour
  * @param <T> tipo dos elementos da lista.
  */
 
-public class LinkedList<T> {
+public class MyLinkedList<T> {
 
     // Classe aninhada Node
     private class Node {
@@ -37,7 +37,7 @@ public class LinkedList<T> {
     /**
      * Construtor da lista.
      */
-    public LinkedList() {
+    public MyLinkedList() {
         head = null;
         tail = null;
         count = 0;
