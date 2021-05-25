@@ -1,30 +1,32 @@
 package trabalho;
 
-import java.util.LinkedList;
-
 /**
  * MagicCircle.java
+ * <p>
  * Trabalho 1, Pt. 2 da disciplina de Algoritmos e Estruturas de Dados I
+ *
  * @author Anderson Sprenger
  */
 public class MagicCircle {
     /** Lista com os números dos habitantes, representando o circulo mágico na memória. */
-    LinkedList<Integer> magicCircle;
-    /** Elemento ativo do circulo */
+    MyLinkedList<Integer> magicCircle;
+    /** Elemento ativo do circulo. */
     Integer activeElement;
 
     /**
      * Feita a lista encadeada representando o circulo mágico e adicionado o Grande Rei, como numero 0
      */
     public MagicCircle() {
-        this.magicCircle = new LinkedList<>();
+        this.magicCircle = new MyLinkedList<>();
         magicCircle.add(0);
         activeElement = 0;
     }
 
     /**
      * Adiciona um elemento no circulo mágico.
+     * <p>
      * Complexidade: O(n) = n
+     *
      * @param element elemento adicionado no circulo mágico.
      */
     private void join(Integer element) {
@@ -33,8 +35,11 @@ public class MagicCircle {
     }
 
     /**
-     * @return a soma entre os vizinhos do elemento ativo no circulo.
+     * Computa a soma entre os vizinhos do elemento ativo no circulo.
+     * <p>
      * Complexidade: O(n) = n
+     *
+     * @return a soma entre os vizinhos do elemento ativo no circulo.
      */
     private int neighborsSum() {
         int activeElementIndex = magicCircle.indexOf(activeElement);
@@ -66,8 +71,11 @@ public class MagicCircle {
     }
 
     /**
-     * @return a posição onde ficara o elemento entrando no circulo mágico
+     * Computa a posição onde ficara o elemento entrando no circulo mágico
+     * <p>
      * Complexidade: O(n) = n
+     *
+     * @return a posição onde ficara o elemento entrando no circulo mágico
      */
     private int joiningElementIndex() {
         // posição do elemento ativo na lista
@@ -85,22 +93,24 @@ public class MagicCircle {
 
     /**
      * Começa a cerimonia do circulo mágico
-     * @param populationSize tamanho da população do Reino de Mármia
+     * <p>
      * Complexidade: O(n) = n^2
+     *
+     * @param populationSize tamanho da população do Reino de Mármia
      */
     public void startCeremony(int populationSize) {
         if (populationSize <= 0) {
             throw new RuntimeException("populationSize <= 0 - populationSize: " + populationSize);
         }
 
-        System.out.println(magicCircle);//.toStringHighlighted(activeElement));
+        System.out.println(magicCircle.toStringHighlighted(activeElement));
 
         // visto que o rei já esta no circulo mágico, e que ele faz parte da população
         // o for começa adicionando o elemento 1, até populationSize, rodando populationSize - 1 vezes.
         for (int i = 1; i <= populationSize; i++) {
             join(i);
             if (i <= 20) {
-                System.out.println(magicCircle);//.toStringHighlighted(activeElement));
+                System.out.println(magicCircle.toStringHighlighted(activeElement));
             }
         }
     }
