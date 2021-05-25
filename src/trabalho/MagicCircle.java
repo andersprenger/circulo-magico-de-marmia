@@ -40,6 +40,7 @@ public class MagicCircle {
      * Complexidade: O(n) = n
      *
      * @return a soma entre os vizinhos do elemento ativo no circulo.
+     * @throws RuntimeException se o elemento ativo do circulo não for encontrado.
      */
     private int neighborsSum() {
         int activeElementIndex = magicCircle.indexOf(activeElement);
@@ -97,6 +98,7 @@ public class MagicCircle {
      * Complexidade: O(n) = n^2
      *
      * @param populationSize tamanho da população do Reino de Mármia
+     * @throws RuntimeException se a população informada no parâmetro for menor que 0.
      */
     public void startCeremony(int populationSize) {
         if (populationSize <= 0) {
