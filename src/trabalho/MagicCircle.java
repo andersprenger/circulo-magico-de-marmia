@@ -135,7 +135,7 @@ public class MagicCircle {
      * Complexidade: O(n) = n^2
      *
      * @param populationSize tamanho da população do Reino de Mármia
-     * @throws RuntimeException se a população informada no parâmetro for menor que 0.
+     * @throws RuntimeException se a população informada no parâmetro for menor que 1.
      */
     public void startCeremony(int populationSize) {
         if (populationSize <= 0) {
