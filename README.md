@@ -1,6 +1,6 @@
 ###### Pontifícia Universidade Católica do Rio Grande do Sul
 
-# Trabalho 1 — Parte 2 de Algoritmos e Estruturas de Dados I
+## Trabalho 1 — Parte 2 de Algoritmos e Estruturas de Dados I
 
 ###### Nome: `Anderson Sprenger`
 
