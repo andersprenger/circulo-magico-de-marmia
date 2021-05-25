@@ -1,217 +1,115 @@
 package trabalho;
 
 /**
- * MyLinkedList.java
  * Implementação propria de lista encadeada genérica.
- *
- * @param <T> tipo dos elementos da lista.
+ * @param <T> tipo dos elementos armazenados na lista.
  * @author Anderson Sprenger
- * @version 23 MAI 21
+ * @version 25 MAI 21
  */
 public class MyLinkedList<T> {
-    public class Node {
-        T element;
-        Node next = null;
+
+    /**
+     * Nó usado para estruturação da lista.
+     * Contem um elemento da lista e a referencia do nó que contem o próximo elemento da lista.
+     * */
+    private class Node {
+        public T element;
+        public Node next;
 
         public Node(T element) {
             this.element = element;
+            next = null;
+        }
+
+        @Override
+        public String toString() {
+            return element.toString();
         }
     }
 
+    /** Referencia para o inicio da lista. */
     private Node head;
+    /** Referencia para o fim da lista. */
     private Node tail;
+
+    /** Contador de nós na lista. */
     private int count;
 
+    /** Construtor da lista. */
     public MyLinkedList() {
-        head = null;
-        tail = null;
-        count = 0;
+        this.head = null;
+        this.tail = null;
+        this.count = 0;
     }
 
+    /**
+     * Tamanho da lista
+     * @return numero de itens armazenados na lista.
+     * Complexidade: O(n) = 1
+     */
     public int size() {
         return count;
     }
 
-    public void clear() {
-        head = null;
-        tail = null;
-        count = 0;
-    }
-
+    /**
+     * Adiciona um elemento na lista.
+     * @param element elemento a ser adicionado na lista.
+     * @throws IllegalArgumentException quando (element == null)
+     * Complexidade: O(n) = 1
+     */
     public void add(T element) {
-        Node e = new Node(element);
-        if (head == null) {
-            head = e;
-        } else {
-            tail.next = e;
+        if (element == null) {
+            throw new IllegalArgumentException("element == null");
         }
-        tail = e;
+
+        Node n = new Node(element);
+
+        if (this.head == null) {
+            head = n;
+        } else {
+            tail.next = n;
+        }
+
+        tail = n;
         count++;
     }
 
-    public void add(int index, T element) {
-        if (index > size() || index < 0) {
-            throw new IndexOutOfBoundsException(index > size() ? "index > size()" : "index < 0");
-        } else if (index == size()) {
-            add(element);
-        } else {
-            Node e = new Node(element);
-            if (index == 0) {
-                e.next = head;
-                head = e;
-            } else {
-                Node aux = head.next;
-                Node behindAux = head;
-                for (int i = 1; i < index; i++) {
-                    aux = aux.next;
-                    behindAux = behindAux.next;
-                }
-                e.next = aux;
-                behindAux.next = e;
-                count++;
-            }
-        }
-    }
-
-    public T get(int index) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()");
-        } else if (index == size() - 1) {
-            return tail.element;
-        }
-        Node aux = head;
-        for (int i = 0; i < index; i++) {
-            aux = aux.next;
-        }
-        return aux.element;
-    }
-
-    public T set(int index, T element) {
-        if (index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= size()");
-        } else if (index == size() - 1) {
-            T elementRemoved = tail.element;
-            tail.element = element;
-            return elementRemoved;
-        } else {
-            Node aux = head;
-            for (int i = 0; i < index; i++) {
-                aux = aux.next;
-            }
-            T elementRemoved = aux.element;
-            aux.element = element;
-            return elementRemoved;
-        }
-    }
-
-    public T removeByIndex(int index) {
-        if (index < 0 || index >= count) {
-            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index >= count");
-        } else if (index == 0) {
-            T elementRemoved = head.element;
-            head = head.next;
-            count--;
-            return elementRemoved;
-        } else {
-            Node aux = head;
-            for (int i = 1; i < index; i++) {
-                aux = aux.next;
-            }
-            T elementRemoved = aux.next.element;
-            aux.next = aux.next.next;
-            count--;
-            return elementRemoved;
-        }
-    }
-
-    public boolean isEmpty() {
-        return head == null;
-    }
-
-    public boolean contains(T element) {
-        Node aux = head;
-        while (aux != null) {
-            if (aux.element.equals(element)) {
-                return true;
-            }
-            aux = aux.next;
-        }
-        return false;
-    }
-
-    public int indexOf(T element) {
-        int index = 0;
-        Node aux = head;
-        while (aux != null) {
-            if (aux.element.equals(element)) {
-                return index;
-            }
-            aux = aux.next;
-            index++;
-        }
-        return -1;
-    }
-
-    public boolean remove(T element) {
-        if (head.element.equals(element)) {
-            head = head.next;
-            count--;
-            return true;
-        }
-        Node behindAux = head;
-        Node aux = head.next;
-        while (aux != null) {
-            if (aux.element.equals(element)) {
-                behindAux.next = aux.next;
-                count--;
-                return true;
-            }
-            behindAux = behindAux.next;
-            aux = aux.next;
-        }
-        return false;
-    }
-
-    public T[] toArray() {
-        Object[] array = new Object[size() - 1];
-        Node aux = head;
-        for (int i = 0; i < size(); i++) {
-            array[i] = aux.element;
-            aux = aux.next;
-        }
-        return (T[]) array;
-    }
+    /**
+     * Adiciona um elemento na lista.
+     * @param index posição onde o elemento sera adicionado na lista.
+     * @param element a ser adicionado na lista
+     * @throws IndexOutOfBoundsException quando (index < 0 || index > size())
+     * @throws IllegalArgumentException quando (element == null)
+     */
+//    public void add(int index, T element) {
+//        if (index < 0 || index > size()) {
+//            throw new IndexOutOfBoundsException(index < 0 ? "index < 0" : "index > size()");
+//        } else if (element == null) {
+//            throw new IllegalArgumentException("element == null");
+//        } else if (index == size()) {
+//            this.add(element);
+//        } else {
+//
+//        }
+//    }
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder();
         Node aux = head;
-        str.append("[");
-        for (int i = 0; i < size(); i++) {
-            str.append(aux.element);
-            str.append(", ");
-            aux = aux.next;
-        }
-        str.deleteCharAt(str.length() - 1);
-        str.deleteCharAt(str.length() - 1);
-        str.append("]");
-        return str.toString();
-    }
 
-    public String toStringHighlighted(T element) {
-        StringBuilder str = new StringBuilder();
-        Node aux = head;
-        for (int i = 0; i < size(); i++) {
-            if (aux.element.equals(element)) {
-                str.append("[");
-                str.append(aux.element);
-                str.append("] ");
-            } else {
-                str.append(aux.element);
-                str.append(" ");
-            }
+        StringBuilder bodyBuilder = new StringBuilder();
+
+        bodyBuilder.append("[");
+
+        while (aux != null) {
+            bodyBuilder.append(aux);
+            bodyBuilder.append(", ");
             aux = aux.next;
         }
-        return str.toString();
+
+        bodyBuilder.delete(bodyBuilder.length() - 2, bodyBuilder.length());
+        bodyBuilder.append("]");
+
+        return bodyBuilder.toString();
     }
 }
