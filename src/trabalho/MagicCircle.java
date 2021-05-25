@@ -93,6 +93,43 @@ public class MagicCircle {
     }
 
     /**
+     * Encontra os vizinhos do Grande Rei no circulo mágico.
+     * <p>
+     * Complexidade: O(n) = n
+     *
+     * @return os vizinhos do Grande Rei no circulo.
+     * @throws RuntimeException se o Grande Rei não for encontrado.
+     */
+    private int [] greatKingNeighbors() {
+        int kingIndex = magicCircle.indexOf(0);
+
+        if (kingIndex == -1) { // Grande Rei não encontrado
+            throw new RuntimeException("O Grande Rei (elemento 0) não foi encontrado!\n" + magicCircle);
+
+        } else if (kingIndex == 0) { // Grande Rei é o primeiro elemento na lista (comportamento esperado)
+
+            if (magicCircle.size() == 1) { // a lista só possui um elemento, ou seja: só tem o Grande rei...
+                return new int[]{0, 0};
+
+            } else { // Grande Rei é o primeiro da lista, mas não o ultimo
+                int leftNeighbor = magicCircle.size() - 1;
+                int rightNeighbour = kingIndex + 1;
+                return new int[]{magicCircle.get(leftNeighbor), magicCircle.get(rightNeighbour)};
+            }
+
+        } else if (kingIndex == magicCircle.size() - 1) { // Grande Rei é o ultimo da lista (mas não o primeiro)
+            int leftNeighbor = magicCircle.get(kingIndex - 1);
+            int rightNeighbour = magicCircle.get(0);
+            return new int[]{magicCircle.get(leftNeighbor), magicCircle.get(rightNeighbour)};
+
+        } else { // Grande Rei não é, nem o primeiro, nem o ultimo elemento da lista
+            int leftNeighbor = magicCircle.get(kingIndex - 1);
+            int rightNeighbour = magicCircle.get(kingIndex + 1);
+            return new int[]{magicCircle.get(leftNeighbor), magicCircle.get(rightNeighbour)};
+        }
+    }
+
+    /**
      * Começa a cerimonia do circulo mágico
      * <p>
      * Complexidade: O(n) = n^2
@@ -109,11 +146,14 @@ public class MagicCircle {
 
         // visto que o rei já esta no circulo mágico, e que ele faz parte da população
         // o for começa adicionando o elemento 1, até populationSize, rodando populationSize - 1 vezes.
-        for (int i = 1; i <= populationSize; i++) {
-            join(i);
+        for (int i = 1; i <= populationSize; i++) { // n
+            join(i); // n
             if (i <= 20) {
                 System.out.println(magicCircle.toStringHighlighted(activeElement));
             }
         }
+
+        int [] greatKingNeighbors = greatKingNeighbors();
+        System.out.println("Vizinhos do Grande Rei: " + greatKingNeighbors[0] + " e " + greatKingNeighbors[1] + ".");
     }
 }
